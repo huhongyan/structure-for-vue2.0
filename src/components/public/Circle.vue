@@ -44,13 +44,29 @@
           'stroke-dashoffset': '0',
           'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease'
         },
-        due: 0
+        due: 0,
+        timer: ''
       }
     },
     computed: mapGetters([
       'waitStatus',
       'waitMaxS'
     ]),
+    watch: {
+      'waitStatus': function (val) {
+        let vm = this;
+        if(val === type.WAIT_STATUS_START)
+          // 继续之前的读秒
+          vm.change((new Date).getTime(), vm.due, vm.waitMaxS);
+        else if(val === type.WAIT_STATUS_RESTART) {
+          clearTimeout(vm.timer);
+          // 重新开始读秒
+          let maxS = vm.waitMaxS;
+          vm.due = maxS;
+          vm.change((new Date).getTime(), maxS, maxS)
+        }
+      }
+    },
     methods: {
       change(startTime,initS, maxS){
         let vm = this,
@@ -68,7 +84,7 @@
             return ;
           }
         }
-        if(vm.waitStatus !== type.WAIT_STATUS_STOP) setTimeout(function () {
+        if(vm.waitStatus !== type.WAIT_STATUS_STOP) vm.timer = setTimeout(function () {
           vm.change(startTime,initS, maxS);
         }, 100);
       }

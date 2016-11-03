@@ -10,14 +10,15 @@ import actions from './actions'
 import loading from './modules/loading'
 import dialog from './modules/dialog'
 import tip from './modules/globalTip'
+import wait from './modules/wait'
 export default new Vuex.Store({
-  mutations,
   getters,
   actions,
   modules:{
     loading,
     dialog,
     tip,
+    wait
   },
   strict: process.env.NODE_ENV !== 'production'
 })

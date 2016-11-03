@@ -43,3 +43,29 @@ export const SET_TIP_CONFIG = 'SET_TIP_CONFIG';
  * @type {string}
  */
 export const UPDATE_TIP_SHOW = 'UPDATE_TIP_SHOW';
+
+/**
+ * 更新等待时间
+ * @type {string}
+ */
+export const UPDATE_WAIT_MAXS = 'UPDATE_WAIT_MAXS';
+/**
+ * 更新等待状态
+ * @type {string}
+ */
+export const UPDATE_WAIT_STATUS = 'UPDATE_WAIT_STATUS';
+/**
+ * 等待的读秒开始状态
+ * @type {Symbol}
+ */
+export const WAIT_STATUS_START = Symbol('WAIT_STATUS_START');
+/**
+ * 等待的读秒结束状态
+ * @type {Symbol}
+ */
+export const WAIT_STATUS_STOP = Symbol('WAIT_STATUS_STOP');
+/**
+ * 重新开始读秒状态
+ * @type {Symbol}
+ */
+export const WAIT_STATUS_RESTART = Symbol('WAIT_STATUS_RESTART');
