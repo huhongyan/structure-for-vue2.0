@@ -63,7 +63,7 @@
           // 重新开始读秒
           let maxS = vm.waitMaxS;
           vm.due = maxS;
-          vm.change((new Date).getTime(), maxS, maxS)
+          this.$store.dispatch('updateWaitStatus', type.WAIT_STATUS_START)
         }
       }
     },
